@@ -21,25 +21,25 @@
   width: 100%;
 }
 
-::ng-deep .custom-item > img {
+.custom-item > img {
   left: 1px;
   position: absolute;
   top: 50%;
   margin-top: -15px;
 }
 
-::ng-deep .dx-theme-material #custom-templates .dx-texteditor-buttons-container {
+.dx-theme-material #custom-templates .dx-texteditor-buttons-container {
   display: none;
 }
 
-::ng-deep .current-value {
+.current-value {
   padding: 10px 0;
 }
 
-::ng-deep .current-value > span {
+.current-value > span {
   font-weight: bold;
 }
 
-::ng-deep .dx-theme-material .dx-selectbox-container .product-name {
+.dx-theme-material .dx-selectbox-container .product-name {
   padding-left: 58px;
 }

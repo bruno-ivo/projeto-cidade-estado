@@ -17,6 +17,7 @@ import {
 } from 'devextreme-angular';
 import { CidadeEstadoComponentComponent } from './shared/components/cidade-estado-component/cidade-estado-component.component';
 import { DxButtonModule } from 'devextreme-angular/ui/button';
+import {CidadeEstadoPageComponent} from "./pages/cidade-estado-page/cidade-estado-page.component";
 
 const routes: Routes = [
   {
@@ -56,8 +57,7 @@ const routes: Routes = [
   },
   {
     path: 'cidade-estado',
-    component: CidadeEstadoComponentComponent,
-    canActivate: [AuthGuardService],
+    component: CidadeEstadoPageComponent
   },
   {
     path: '**',

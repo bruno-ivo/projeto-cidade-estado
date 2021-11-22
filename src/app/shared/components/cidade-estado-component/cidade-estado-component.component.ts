@@ -19,16 +19,14 @@ export class CidadeEstadoComponentComponent implements OnInit {
 
   estados: EstadoBr[] = [];
 
+
   constructor(private http: HttpClient,
-              private cidadeEstado: CidadeEstadoService) { }
+              private cidadeEstadoService: CidadeEstadoService) { }
 
   ngOnInit(): void {
-    this.cidadeEstado.getEstadosBr()
-    .subscribe((res: EstadoBr) => {
-      this.estados.push(res);
-      console.log(res);
-
-    })
+    this.cidadeEstadoService.getEstadosBr().subscribe( (x: EstadoBr[]) => {
+      this.estados = x;
+    });
   }
 
 
