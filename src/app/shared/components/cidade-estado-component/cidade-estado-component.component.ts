@@ -1,6 +1,13 @@
 import { CidadeBr } from './../../models/cidade-br.models';
 import { map, switchMap } from 'rxjs/operators';
-import { Component, OnInit, NgModule } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  NgModule,
+  Output,
+  EventEmitter,
+  Input,
+} from '@angular/core';
 import { CidadeEstadoPageComponent } from '../../../pages/cidade-estado-page/cidade-estado-page.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -21,9 +28,24 @@ import { EstadoBr } from '../../models/estado-br.models';
 })
 export class CidadeEstadoComponentComponent implements OnInit {
   estados: EstadoBr[] = [];
+
   cidades: CidadeBr[] = [];
 
+  @Input()
+  cidadeValue: string = '';
+
+  @Input()
+  estadoValue: string = '';
+
+  @Output()
+  mudouValorCidade = new EventEmitter();
+
+  @Output()
+  mudouValorEstado = new EventEmitter();
+
   estado: EstadoBr = new EstadoBr();
+
+  //displayExpr = this.estado.nome + '-' + this.estado.id;
 
   constructor(
     private http: HttpClient,
@@ -37,11 +59,24 @@ export class CidadeEstadoComponentComponent implements OnInit {
   }
 
   onValueChangeEstado(event: any) {
-    this.cidadeEstadoService.getCidadesBr(event.value).subscribe((x) => {
+    this.cidadeEstadoService.getCidadesBr(event.value.id).subscribe((x) => {
       this.cidades = x;
     });
+    this.mudouValorEstado.emit({ estados: event.value });
+  }
+
+  onValueChangeCidade(event: any) {
+    this.mudouValorCidade.emit({ cidades: event });
+  }
+
+  getDisplayEstado(item: any) {
+    if (item) {
+      return item.sigla + ' - ' + item.nome;
+    }
+    return item;
   }
 }
+
 @NgModule({
   imports: [
     CommonModule,

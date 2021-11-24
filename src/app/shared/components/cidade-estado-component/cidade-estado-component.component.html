@@ -3,26 +3,21 @@
     <div class="dx-field-label">Estado</div>
     <div class="dx-field-value">
       <dx-select-box [items]="estados"
-                     #selectBoxEstado
-                      valueExpr="sigla"
+                     valueChangeEvent="estados"
                       (onValueChanged)="onValueChangeEstado($event)"
-                      displayExpr="sigla"
-                      itemTemplate="estadoCompleto">
-        <div *dxTemplate="let data of 'estadoCompleto'">
-          <div class="custom-item">
-            <dx-text-box
-              class="product-name"
-              [value]="data.nome"
-            ></dx-text-box>
-          </div>
-        </div>
-        <div *dxTemplate="let data of 'estados'">
+                      [displayExpr]="getDisplayEstado">
+
+<!--         <div *dxTemplate="let d of 'estadoCompleto'">
           <div class="custom-item">
             <div class="product-name">
-              {{ data.sigla }}
+              <dx-text-box
+              class="product-name"
+              [value]="d.sigla && d.nome"
+            ></dx-text-box>
             </div>
           </div>
         </div>
+ -->
       </dx-select-box>
     </div>
   </div>
@@ -30,18 +25,9 @@
     <div class="dx-field-label">Cidade</div>
     <div class="dx-field-value">
       <dx-select-box [items]="cidades"
-                     #selectBoxCidade
                      valueExpr="nome"
+                     valueChangeEvent="cidades"
+                     (onValueChanged)="onValueChangeCidade($event)"
                      displayExpr="nome"></dx-select-box>
     </div>
   </div>
-  <div class="current-value">
-    Cidade Selecionada: <span>{{ selectBoxCidade.value }}</span>
-  </div>
-  <div class="current-value">
-    Estado Selecionado: <span>{{ selectBoxEstado.value }}</span>
-  </div>
-</div>
-
-
-

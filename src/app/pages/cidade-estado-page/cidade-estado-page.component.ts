@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-cidade-estado-page',
@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CidadeEstadoPageComponent implements OnInit {
 
+  valorEstado: any;
+
+  valorCidade:any;
+
+  @Input()
+  onMudouValorEstado(evento: any){
+    this.valorEstado = evento.estados.nome;
+    console.log(evento);
+
+  }
+
+  onMudouValorCidade(evento: any){
+    this.valorCidade = evento.cidades.value;
+    console.log(evento);
+
+  }
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }
