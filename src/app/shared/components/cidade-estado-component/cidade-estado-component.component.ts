@@ -28,19 +28,19 @@ import { EstadoBr } from '../../models/estado-br.models';
 })
 export class CidadeEstadoComponentComponent implements OnInit {
 
-  private _estadoValue: string = "";
-  private _cidadeValue: string = "";
   estados: EstadoBr[] = [];
 
   cidades: CidadeBr[] = [];
 
-
+  @Output()
+  estadoValueChange: EventEmitter<string> = new EventEmitter();
 
   @Output()
   cidadeValueChange: EventEmitter<string> = new EventEmitter();
 
-  @Output()
-  estadoValueChange: EventEmitter<string> = new EventEmitter();
+
+  private _estadoValue: string = "";
+  private _cidadeValue: string = "";
 
   @Input()
   get estadoValue(): string {
