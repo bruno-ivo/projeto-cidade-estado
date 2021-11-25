@@ -9,7 +9,7 @@ export class CidadeEstadoPageComponent implements OnInit {
 
   valorEstado: any;
 
-  valorCidade:any;
+  valorCidade: any;
 
   @Input()
   onMudouValorEstado(evento: any){
@@ -18,6 +18,7 @@ export class CidadeEstadoPageComponent implements OnInit {
 
   }
 
+  @Input()
   onMudouValorCidade(evento: any){
     this.valorCidade = evento.cidades.value;
     console.log(evento);
