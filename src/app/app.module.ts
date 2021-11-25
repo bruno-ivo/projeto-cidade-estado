@@ -15,7 +15,7 @@ import { LocadoraPageComponent } from './pages/locadora-page/locadora-page.compo
 import { ClientePageComponent } from './pages/cliente-page/cliente-page.component';
 import { FilmePageComponent } from './pages/filme-page/filme-page.component';
 import { PedidoPageComponent } from './pages/pedido-page/pedido-page.component';
-import { ClienteComponent } from './shared/components/cliente/cliente.component';
+import { ClienteComponent, ClienteComponentModule } from './shared/components/cliente/cliente.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { ClienteComponent } from './shared/components/cliente/cliente.component'
     ClientePageComponent,
     FilmePageComponent,
     PedidoPageComponent,
-    ClienteComponent
+
   ],
   imports: [
     BrowserModule,
@@ -40,6 +40,7 @@ import { ClienteComponent } from './shared/components/cliente/cliente.component'
     UnauthenticatedContentModule,
     AppRoutingModule,
     CidadeEstadoComponentModule,
+    ClienteComponentModule,
     HttpClientModule
   ],
   providers: [AuthService, ScreenService, AppInfoService, CidadeEstadoService],
