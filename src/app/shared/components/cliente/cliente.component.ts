@@ -15,13 +15,15 @@ export class ClienteComponent implements OnInit {
 
   clientes: Cliente[] = []
 
+  cliente: Cliente = new Cliente();
+
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     this.clienteService.listarCLientes()
     .subscribe(c => this.clientes = c);
   }
-
+  
 }
 @NgModule({
   imports: [
