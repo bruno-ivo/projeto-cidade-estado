@@ -11,19 +11,18 @@ export class CidadeEstadoPageComponent implements OnInit {
 
   valorCidade: any;
 
-  @Input()
+
   onMudouValorEstado(evento: any){
-    this.valorEstado = evento.estados.nome;
+    this.valorEstado = evento;
     console.log(evento);
-
   }
 
-  @Input()
   onMudouValorCidade(evento: any){
-    this.valorCidade = evento.cidades.value;
+    this.valorCidade = evento;
     console.log(evento);
-
   }
+
+
   constructor() { }
 
   ngOnInit(): void {

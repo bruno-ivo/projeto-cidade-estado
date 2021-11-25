@@ -27,30 +27,47 @@ import { EstadoBr } from '../../models/estado-br.models';
   styleUrls: ['./cidade-estado-component.component.scss'],
 })
 export class CidadeEstadoComponentComponent implements OnInit {
+
+  private _estadoValue: string = "";
+  private _cidadeValue: string = "";
   estados: EstadoBr[] = [];
 
   cidades: CidadeBr[] = [];
 
-  @Input()
-  cidadeValue: string = '';
 
-  @Input()
-  estadoValue: string = '';
 
   @Output()
-  mudouValorCidade = new EventEmitter();
+  cidadeValueChange: EventEmitter<string> = new EventEmitter();
 
   @Output()
-  mudouValorEstado = new EventEmitter();
+  estadoValueChange: EventEmitter<string> = new EventEmitter();
 
-  estado: EstadoBr = new EstadoBr();
+  @Input()
+  get estadoValue(): string {
+    return this._estadoValue;
+  }
+  set estadoValue(value: string) {
+    this._estadoValue = value;
+  }
+
+  @Input()
+  get cidadeValue(): string {
+    return this._cidadeValue;
+  }
+
+  set cidadeValue(value: string) {
+    this._cidadeValue = value;
+  }
+
+
+  private _estado: EstadoBr = new EstadoBr();
 
   //displayExpr = this.estado.nome + '-' + this.estado.id;
 
   constructor(
     private http: HttpClient,
     private cidadeEstadoService: CidadeEstadoService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.cidadeEstadoService.getEstadosBr().subscribe((x: EstadoBr[]) => {
@@ -62,12 +79,13 @@ export class CidadeEstadoComponentComponent implements OnInit {
     this.cidadeEstadoService.getCidadesBr(event.value.id).subscribe((x) => {
       this.cidades = x;
     });
-    this.mudouValorEstado.emit({ estados: event.value });
+    this.estadoValueChange.emit( event.value.nome);
   }
 
-  onValueChangeCidade(event: any) {
-    this.mudouValorCidade.emit({ cidades: event });
+  onValueChangeCidade(event: any){
+    this.cidadeValueChange.emit(event.value);
   }
+
 
   getDisplayEstado(item: any) {
     if (item) {
