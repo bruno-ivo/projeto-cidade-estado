@@ -21,5 +21,24 @@ export const navigation = [
         path: '/cidade-estado'
       }
     ]
-  }
+  }, {
+    text: 'Locadora Filmes [ i ]',
+    path: '/locadora',
+    icon: 'video',
+    items: [
+      {
+        text: 'Área do cliente',
+        path: '/cliente'
+      },
+      {
+        text: 'Filmes',
+        path: '/filme'
+      },
+      {
+        text: 'Pedido',
+        path: '/pedido'
+      },
+    ]
+  },
+
 ];

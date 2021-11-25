@@ -18,6 +18,10 @@ import {
 import { CidadeEstadoComponentComponent } from './shared/components/cidade-estado-component/cidade-estado-component.component';
 import { DxButtonModule } from 'devextreme-angular/ui/button';
 import {CidadeEstadoPageComponent} from "./pages/cidade-estado-page/cidade-estado-page.component";
+import { LocadoraPageComponent } from './pages/locadora-page/locadora-page.component';
+import { ClientePageComponent } from './pages/cliente-page/cliente-page.component';
+import { FilmePageComponent } from './pages/filme-page/filme-page.component';
+import { PedidoPageComponent } from './pages/pedido-page/pedido-page.component';
 
 const routes: Routes = [
   {
@@ -58,6 +62,22 @@ const routes: Routes = [
   {
     path: 'cidade-estado',
     component: CidadeEstadoPageComponent
+  },
+  {
+    path: 'locadora',
+    component: LocadoraPageComponent
+  },
+  {
+    path: 'cliente',
+    component: ClientePageComponent
+  },
+  {
+    path: 'filme',
+    component: FilmePageComponent
+  },
+  {
+    path: 'pedido',
+    component: PedidoPageComponent
   },
   {
     path: '**',
